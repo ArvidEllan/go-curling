@@ -33,3 +33,24 @@ to quickly create a Cobra application.`,
         println("Path:", path)
     },
 }
+Run: func(cmd *cobra.Command, args []string) {
+    u, err := url.Parse(args[0])
+
+    if err != nil {
+      panic(err)
+    }
+
+    host := u.Hostname()
+    port := u.Port()
+
+    if port == "" {
+      port = "80"
+    }
+
+    path := u.Path
+
+    println("Host:", host)
+    println("Port:", port)
+    println("Path:", path)
+  },
+}
